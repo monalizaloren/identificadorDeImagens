@@ -1,43 +1,55 @@
+ 
+<html>
+    <head>
+      <title>Identificador de Imagens</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+      <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js"></script>
+  
+     <link rel="stylesheet" href="style.css">
+    
+    </head>
+  
+    <body>
+    <div class="container">
       
-Webcam.attach( '#camera' );
-
-camera = document.getElementById("camera");
-      
-  Webcam.set({
-    width:350,
-    height:300,
-    image_format : 'png',
-    png_quality:90
-  });
-
-function take_snapshot()
-{
-    Webcam.snap(function(data_uri) {
-        document.getElementById("result").innerHTML = '<img id="selfie_image" src="'+data_uri+'"/>';
-    });
-}
-
-classifier = ml5.imageClassifier('https://teachablemachine.withgoogle.com/models/VK6X7UYHV/model.json',modelLoaded);
-
-
-  function modelLoaded() {
-    console.log('Model Loaded!');
-  }
-      
-  function check()
-  {
-    img = document.getElementById('selfie_image');
-    classifier.classify(img, gotResult);
-  }
-
-function gotResult(error, results) {
-
-  if (error) {
-    console.error(error);
-  } else {
+      <center>
+        <!-- Coloque o texto inicial do site-->>
+        <!--Utilize a tag que pula de linha -->
+        <!-- Explique o que o site fará-->>
+  
+        <!--Coloque o nome dos objetos deixando um abaixo do outro-->>
+  
+        <label>Visualização da webcam - </label>
+        <!-- Coloque um ID para a câmera-->
+        <div id="??"></div>
+        <br><br>
+        <!-- Coloque um ID para o resultado-->
+        <div id="???"></div>
+        <br><br>
+        <!-- Crie um botão que...
+          1. quando for clicado aconteça uma função que captura a imagem
+          2. Tenha o texto escrito 'capturar imagem'-->
+        <br><br>
+        <!-- Crie um botão que...
+          1. quando for clicado aconteça uma função que identifica a imagem
+          2. Tenha o texto escrito 'Identificar imagem'-->
+        
+        <br><br>
+  
+        <p style="font-size: 22px;">Objeto : <span id="result_object_name"></span> </p>
+        <p style="font-size: 22px;">Precisão : <span id="result_object_accuracy"></span> </p>
+      </center>
+  
+    </div>
+  <!--Conecte o código javascript-->>
+  
+    </body>
+  </html>
+  
    
-    console.log(results);
-    document.getElementById("result_object_name").innerHTML = results[0].label;
-    document.getElementById("result_object_accuracy").innerHTML = results[0].confidence.toFixed(3);
-  }
-}
+  
